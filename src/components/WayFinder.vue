@@ -51,6 +51,7 @@
   </template>
 
   <script>
+    const apiURL = "https://swapi.dev/api/";
   export default {
     name: 'WayFinder',
     props: {
@@ -67,7 +68,21 @@
     }),
 
     methods: {
+      async setAllElements() {
+        console.log('we have called set all elements');
+        const response = await fetch(`${apiURL}people/`);
+        //console.log(response.json());
+        if (response.status >= 200 && response.status <= 299) {
+          const data = await response.json();
+          console.log(data);
+        }
+      },
       search() {
+        console.log('hello, welcome to the search method!!!');
+        this.setAllElements();
+        //const response = fetch(`${apiURL}people/`);
+        //console.log(response);
+        
 
       },
       reset () {
