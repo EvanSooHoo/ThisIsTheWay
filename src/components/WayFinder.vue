@@ -1,7 +1,6 @@
   <template>
     <div class="wayfinder">
-      <h1>Search Star Wars Characters</h1>
-      <h3>This is the way!</h3>
+      <h1>Search Star Wars Characters (This is the way!)</h1>
       <v-form
       ref="form"
       v-model="valid"
@@ -13,21 +12,7 @@
         :rules="nameRules"
         required
       ></v-text-field>
-      <!--
-      <v-text-field
-        v-model="homeworld"
-        label="Homeworld"
-        :rules="homeworldRules"
-        required
-      ></v-text-field>
-
-      <v-text-field
-        v-model="films"
-        label="Films"
-        :rules="filmRules"
-        required
-      ></v-text-field>
-      -->
+      
       <v-select
           v-model="select"
           :items="items"
@@ -37,6 +22,39 @@
           data-vv-name="select"
           required
         ></v-select>
+        <v-container fluid>
+      <h1>Select film he/she was in (leave empty for no filter)</h1>
+    <v-checkbox
+      v-model="checkboxSelected"
+      label="1. A New Hope"
+      value="1. A New Hope"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="checkboxSelected"
+      label="2. The Empire Strikes Back"
+      value="2. The Empire Strikes Back"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="checkboxSelected"
+      label="3. Return of the Jedi"
+      value="3. Return of the Jedi"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="checkboxSelected"
+      label="4. The Phantom Menace"
+      value="4. The Phantom Menace"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="checkboxSelected"
+      label="5. Clone Wars"
+      value="5. Clone Wars"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="checkboxSelected"
+      label="6. Revenge of the Sith"
+      value="6. Revenge of the Sith"
+    ></v-checkbox>
+      </v-container>
       <h1>Results</h1>
       <p>Name: {{this.name}}</p>
       <p>Birth Year: {{this.birthyear}}</p>
@@ -145,15 +163,19 @@
       homeworldRules: [
         v => !!v || 'Homeworld is required',
       ],
+      checkboxSelected: null,
       films: '',
       filmRules: [
         v => !!v || 'Films list is required',
       ],
       birthyear: '',
       species: '',
-      dateLastEdited: ''
+      dateLastEdited: '',
+      
     }),
-
+    return: {
+      //checkboxSelected: ['1'],
+    },
     methods: {
       async setAllElements() {
         console.log('we have called set all elements');
@@ -173,14 +195,11 @@
           console.log(this.select);
           let index = this.select.substr(0, this.select.indexOf('.'));
           if(index != 0) {
-            /*
-            const response = await fetch(`${apiURL}planets/${id}`)
-    const data = await response.json()
-    return data
-            */
             filteredList = filteredList.filter(result => result.homeworld.match(`${apiURL}planets/${index}`));
           }
           console.log(index);
+          console.log('print checkbox selected');
+          console.log(this.checkboxSelected);
           if(filteredList.length === 1)
           {
             console.log('RESULT FOUND');
