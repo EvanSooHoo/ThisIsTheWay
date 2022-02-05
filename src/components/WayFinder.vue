@@ -92,21 +92,32 @@
           console.log('print data before filtering');
           console.log(results);
           let filteredList = results;
-          filteredList = filteredList.filter(result => result.name == this.name);
+          //filteredList = filteredList.filter(result => result.name.match('/' + this.name + '/i'));
+          filteredList = filteredList.filter(result => result.name.match(this.name));
           console.log(filteredList);
           if(filteredList.length === 1)
           {
             console.log('RESULT FOUND');
+            this.name = filteredList[0].name;
+            this.birthyear = filteredList[0].birth_year;
+            this.homeworld = filteredList[0].homeworld;
+            this.films = filteredList[0].films.join(';');
+            this.species = filteredList[0].species.join(';');
+            this.dateLastEdited = filteredList[0].edited;
+
           } else {
             console.log('SEARCH FAILED');
-            this.valid = false;
+            
+            this.name = 'NO MATCHES FOUND. Try again.';
+            //this.valid = false;
           }
         }
       },
       search() {
         console.log('hello, welcome to the search method!!!');
-        this.$refs.form.validate();
-        this.setAllElements();
+        if (this.$refs.form.validate()) {
+          this.setAllElements();
+        }
       },
       reset () {
         this.$refs.form.reset()
