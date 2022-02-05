@@ -166,11 +166,20 @@
           console.log(results);
           let filteredList = results;
           //filteredList = filteredList.filter(result => result.name.match('/' + this.name + '/i'));
+          //filteredList = filteredList.filter(result => result.name.match(`/${this.name}/i`));
           filteredList = filteredList.filter(result => result.name.match(this.name));
           console.log(filteredList);
           console.log('the value of homeworld is ');
           console.log(this.select);
           let index = this.select.substr(0, this.select.indexOf('.'));
+          if(index !== 0) {
+            /*
+            const response = await fetch(`${apiURL}planets/${id}`)
+    const data = await response.json()
+    return data
+            */
+            filteredList = filteredList.filter(result => result.homeworld.match(`${apiURL}planets/${index}`));
+          }
           console.log(index);
           if(filteredList.length === 1)
           {
