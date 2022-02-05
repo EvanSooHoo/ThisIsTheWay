@@ -172,7 +172,7 @@
           console.log('the value of homeworld is ');
           console.log(this.select);
           let index = this.select.substr(0, this.select.indexOf('.'));
-          if(index !== 0) {
+          if(index != 0) {
             /*
             const response = await fetch(`${apiURL}planets/${id}`)
     const data = await response.json()
