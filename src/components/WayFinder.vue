@@ -13,7 +13,7 @@
         :rules="nameRules"
         required
       ></v-text-field>
-
+      <!--
       <v-text-field
         v-model="homeworld"
         label="Homeworld"
@@ -27,6 +27,15 @@
         :rules="filmRules"
         required
       ></v-text-field>
+      -->
+      <v-select
+          v-model="select"
+          :items="items"
+          :error-messages="errors"
+          label="Select"
+          data-vv-name="select"
+          required
+        ></v-select>
       <h1>Results</h1>
       <p>Name: {{this.name}}</p>
       <p>Birth Year: {{this.birthyear}}</p>
@@ -67,7 +76,40 @@
       nameRules: [
         v => !!v || 'Name is required',
       ],
-      
+      select: null,
+      items: [
+        '1. Tatooine',
+
+        '2. Alderaan',
+        '3. Yavin IV',
+        '4. Hoth',
+        '5. Dagobah',
+        '6. Bespin',
+        '7. Endor',
+        '8, Naboo',
+        '9. Coruscant',
+        '10. Kamino',
+        '11. Geonosis',
+        '12. Utapau',
+        '13. Mustafar',
+        '14. Kashyyyk',
+        '15. Polis Massa',
+        '16. Mygeeto',
+        '17. Felucia',
+        '18. Cato Neimoidia',
+        '19. Saleucami',
+        '20. Stewjon',
+        '21. Eriadu',
+        '22. Corellia',
+        '23. Rodia',
+        '24. Nal Hutta',
+        '25. Dantooine',
+        '26. Bestine IV',
+        '27. Ord Mantell',
+        '28. (Unknown)',
+        '29. Trandosha',
+        '30. Socorro'
+      ],
       homeworld: '',
       homeworldRules: [
         v => !!v || 'Homeworld is required',
