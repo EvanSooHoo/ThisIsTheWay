@@ -1,6 +1,7 @@
   <template>
     <div class="wayfinder">
       <h1>Search Star Wars Characters</h1>
+      <h3>This is the way!</h3>
       <v-form
       ref="form"
       v-model="valid"
@@ -9,18 +10,21 @@
       <v-text-field
         v-model="name"
         label="Name"
+        :rules="nameRules"
         required
       ></v-text-field>
 
       <v-text-field
         v-model="homeworld"
         label="Homeworld"
+        :rules="homeworldRules"
         required
       ></v-text-field>
 
       <v-text-field
         v-model="films"
         label="Films"
+        :rules="filmRules"
         required
       ></v-text-field>
       <h1>Results</h1>
@@ -60,8 +64,18 @@
     data: () => ({
       valid: true,
       name: '',
+      nameRules: [
+        v => !!v || 'Name is required',
+      ],
+      
       homeworld: '',
+      homeworldRules: [
+        v => !!v || 'Homeworld is required',
+      ],
       films: '',
+      filmRules: [
+        v => !!v || 'Films list is required',
+      ],
       birthyear: '',
       species: '',
       dateLastEdited: ''
@@ -79,6 +93,7 @@
       },
       search() {
         console.log('hello, welcome to the search method!!!');
+        this.$refs.form.validate();
         this.setAllElements();
         //const response = fetch(`${apiURL}people/`);
         //console.log(response);
