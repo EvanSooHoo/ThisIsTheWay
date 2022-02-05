@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <WayFinder/>
+    <WayFinder msg=""/>
   </div>
 </template>
 
