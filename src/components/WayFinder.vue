@@ -31,7 +31,9 @@
       <v-select
           v-model="select"
           :items="items"
+          item-value=items[0]
           label="Homeworld"
+          return-object
           data-vv-name="select"
           required
         ></v-select>
@@ -166,6 +168,10 @@
           //filteredList = filteredList.filter(result => result.name.match('/' + this.name + '/i'));
           filteredList = filteredList.filter(result => result.name.match(this.name));
           console.log(filteredList);
+          console.log('the value of homeworld is ');
+          console.log(this.select);
+          let index = this.select.substr(0, this.select.indexOf('.'));
+          console.log(index);
           if(filteredList.length === 1)
           {
             console.log('RESULT FOUND');
@@ -173,7 +179,7 @@
             this.birthyear = filteredList[0].birth_year;
             this.homeworld = filteredList[0].homeworld;
             this.films = filteredList[0].films.join(';');
-            this.species = filteredList[0].species.join(';');
+            this.species = filteredList[0].species.join('');
             this.dateLastEdited = filteredList[0].edited;
 
           } else {
