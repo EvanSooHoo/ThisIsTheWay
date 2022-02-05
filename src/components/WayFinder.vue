@@ -88,17 +88,25 @@
         //console.log(response.json());
         if (response.status >= 200 && response.status <= 299) {
           const data = await response.json();
-          console.log(data);
+          const results = data.results;
+          console.log('print data before filtering');
+          console.log(results);
+          let filteredList = results;
+          filteredList = filteredList.filter(result => result.name == this.name);
+          console.log(filteredList);
+          if(filteredList.length === 1)
+          {
+            console.log('RESULT FOUND');
+          } else {
+            console.log('SEARCH FAILED');
+            this.valid = false;
+          }
         }
       },
       search() {
         console.log('hello, welcome to the search method!!!');
         this.$refs.form.validate();
         this.setAllElements();
-        //const response = fetch(`${apiURL}people/`);
-        //console.log(response);
-        
-
       },
       reset () {
         this.$refs.form.reset()
