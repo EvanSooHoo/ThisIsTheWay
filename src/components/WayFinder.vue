@@ -173,41 +173,21 @@
       dateLastEdited: '',
       
     }),
-    return: {
-      //checkboxSelected: ['1'],
-    },
     methods: {
       async setAllElements() {
-        console.log('we have called set all elements');
         const response = await fetch(`${apiURL}people/`);
-        //console.log(response.json());
         if (response.status >= 200 && response.status <= 299) {
           const data = await response.json();
           const results = data.results;
-          console.log('print data before filtering');
-          console.log(results);
           let filteredList = results;
-          //filteredList = filteredList.filter(result => result.name.match('/' + this.name + '/i'));
-          //filteredList = filteredList.filter(result => result.name.match(`/${this.name}/i`));
           filteredList = filteredList.filter(result => result.name.match(this.name));
-          console.log(filteredList);
-          console.log('the value of homeworld is ');
-          console.log(this.select);
           let index = this.select.substr(0, this.select.indexOf('.'));
           if(index != 0) {
             filteredList = filteredList.filter(result => result.homeworld.match(`${apiURL}planets/${index}`));
           }
-          console.log(index);
-          console.log('print checkbox selected');
-          console.log(this.checkboxSelected);
           if(this.checkboxSelected !== null) {
             let checkboxIndex = this.checkboxSelected.substr(0, this.checkboxSelected.indexOf('.'));
-            console.log(checkboxIndex);
-            console.log('does it include');
-            console.log(`${apiURL}films/${checkboxIndex}`);
             filteredList = filteredList.filter(result => result.films.includes(`${apiURL}films/${checkboxIndex}/`));
-            console.log('new list after filtering');
-            console.log(filteredList);
           }
           
 
@@ -225,12 +205,10 @@
             console.log('SEARCH FAILED');
             
             this.name = 'NO MATCHES FOUND. Try again.';
-            //this.valid = false;
           }
         }
       },
       search() {
-        console.log('hello, welcome to the search method!!!');
         if (this.$refs.form.validate()) {
           this.setAllElements();
         }
