@@ -23,7 +23,13 @@
         label="Films"
         required
       ></v-text-field>
-
+      <h1>Results</h1>
+      <p>Name: {{this.name}}</p>
+      <p>Birth Year: {{this.birthyear}}</p>
+      <p>Homeworld: {{this.homeworld}}</p>
+      <p>Films: {{this.films}}</p>
+      <p>Species: {{this.species}}</p>
+      <p>Date Last Edited: {{this.dateLastEdited}}</p>
       <v-btn
         :disabled="!valid"
         color="success"
@@ -54,7 +60,10 @@
       valid: true,
       name: '',
       homeworld: '',
-      films: ''
+      films: '',
+      birthyear: '',
+      species: '',
+      dateLastEdited: ''
     }),
 
     methods: {
