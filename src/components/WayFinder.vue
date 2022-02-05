@@ -200,6 +200,17 @@
           console.log(index);
           console.log('print checkbox selected');
           console.log(this.checkboxSelected);
+          if(this.checkboxSelected !== null) {
+            let checkboxIndex = this.checkboxSelected.substr(0, this.checkboxSelected.indexOf('.'));
+            console.log(checkboxIndex);
+            console.log('does it include');
+            console.log(`${apiURL}films/${checkboxIndex}`);
+            filteredList = filteredList.filter(result => result.films.includes(`${apiURL}films/${checkboxIndex}/`));
+            console.log('new list after filtering');
+            console.log(filteredList);
+          }
+          
+
           if(filteredList.length === 1)
           {
             console.log('RESULT FOUND');
