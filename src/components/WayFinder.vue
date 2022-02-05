@@ -31,8 +31,7 @@
       <v-select
           v-model="select"
           :items="items"
-          :error-messages="errors"
-          label="Select"
+          label="Homeworld"
           data-vv-name="select"
           required
         ></v-select>
@@ -76,10 +75,10 @@
       nameRules: [
         v => !!v || 'Name is required',
       ],
-      select: null,
+      select: 0,
       items: [
+        '0. Any (no homeworld filter)',
         '1. Tatooine',
-
         '2. Alderaan',
         '3. Yavin IV',
         '4. Hoth',
@@ -108,7 +107,37 @@
         '27. Ord Mantell',
         '28. (Unknown)',
         '29. Trandosha',
-        '30. Socorro'
+        '30. Socorro',
+        '31. Mon Cala',
+        '32. Chandrila',
+        '33. Sullust', 
+        '34. Toydaria',
+        '35. Malastare',
+        '36. Dathomir',
+        '37. Ryloth',
+        '38. Aleen Minor',
+        '39. Vulpter',
+        '40. Troiken',
+        '41. Tund',
+        '42. Haruun Kal',
+        '43. Cerea',
+        '44. Glee Anselm',
+        '45. Iridonia',
+        '46. Tholoth',
+        '47. Iktotch',
+        '48. Quermia',
+        '49. Dorin',
+        '50. Champala',
+        '51. Mirial',
+        '52. Serenno',
+        '53. Concord Dawn',
+        '54. Zolan',
+        '55. Ojom',
+        '56. Skako',
+        '57. Muunilinst',
+        '58. Shili',
+        '59. Kalee',
+        '60. Umbara'
       ],
       homeworld: '',
       homeworldRules: [
