@@ -175,7 +175,7 @@
     }),
     methods: {
       async setAllElements() {
-        const response = await fetch(`${apiURL}people/`);
+        const response = await fetch(`${apiURL}/people/?search=${this.name}`);
         if (response.status >= 200 && response.status <= 299) {
           const data = await response.json();
           const results = data.results;
@@ -207,6 +207,9 @@
             this.name = 'NO MATCHES FOUND. Try again.';
           }
         }
+        
+        
+        
       },
       search() {
         if (this.$refs.form.validate()) {
